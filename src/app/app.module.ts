@@ -1,24 +1,25 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-
+import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { PetOwnersService } from './services/pet-owners.service';
 import { PetOwnerComponent } from './components/pet-owner.component';
+import { PetOwnersService } from './services/pet-owners.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    PetOwnerComponent
-
+    PetOwnerComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [PetOwnersService],
+  providers: [
+    PetOwnersService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

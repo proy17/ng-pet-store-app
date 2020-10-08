@@ -1,18 +1,22 @@
 /* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { PetOwnerComponent } from './pet-owner.component';
-import 'jest';
-
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { PetOwnersService } from '../services/pet-owners.service';
 
 describe('PetOwnerComponent', () => {
   let component: PetOwnerComponent;
   let fixture: ComponentFixture<PetOwnerComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ PetOwnerComponent ]
+      declarations: [PetOwnerComponent],
+      providers: [PetOwnersService],
+      imports: [
+        HttpClientModule
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,11 +25,55 @@ describe('PetOwnerComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
   });
-    it('should create', () => {
+
+  it('should have "Male" owners', () => {
     expect(component).toBeTruthy();
+    expect(component.viewDataModel).toBeTruthy();
+    const maleOwners = component.viewDataModel.Male;
+    expect(maleOwners).toBeDefined();
+    const compiled = fixture.debugElement.nativeElement;
+    console.log(compiled.querySelector('div'));
+    expect(compiled.querySelector('div').textContent).toContain('Male');
+  });
+
+  it('should have "Female" owners', () => {
+    expect(component).toBeTruthy();
+    expect(component.viewDataModel).toBeTruthy();
+    const maleOwners = component.viewDataModel.Female;
+    expect(maleOwners).toBeDefined();
+  });
+
+  it('should have "Male" owners with pets as "Cat"', () => {
+    expect(component).toBeTruthy();
+    expect(component.petType).toEqual('Cat');
+    expect(component.viewDataModel).toBeTruthy();
+    const maleOwners = component.viewDataModel.Male;
+    expect(maleOwners).toBeDefined();
+    for (const owner of maleOwners) {
+      if (!!owner.pets) {
+        for (const pet of owner.pets) {
+          expect(pet.type).toEqual('Cat');
+        }
+      }
+    }
+  });
+
+  it('should have the title "Female" owners with pets as "Cat"', () => {
+    expect(component).toBeTruthy();
+    expect(component.petType).toEqual('Cat');
+    expect(component.viewDataModel).toBeTruthy();
+    const maleOwners = component.viewDataModel.Female;
+    expect(maleOwners).toBeDefined();
+    for (const owner of maleOwners) {
+      if (!!owner.pets) {
+        for (const pet of owner.pets) {
+          expect(pet.type).toEqual('Cat');
+        }
+      }
+    }
   });
 
 });

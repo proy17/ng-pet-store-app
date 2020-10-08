@@ -1,17 +1,21 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, retry } from 'rxjs/operators';
-import Owner from '../domain/owner';
+import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
+import Owner from '../domain/owner';
 
 @Injectable()
 export class PetOwnersService {
-  private readonly API_PEOPLE_URL = 'http://agl-developer-test.azurewebsites.net/people.json';
-
   constructor(private httpClient: HttpClient) { }
 
+  /**
+   * Sned get request to the bakcend API to fetch people information
+   *
+   * @returns Observable of Owner array
+   */
   public sendGetRequest(): Observable<Owner[]> {
-    return this.httpClient.get<Owner[]>(this.API_PEOPLE_URL)
+    return this.httpClient.get<Owner[]>(environment.apiPeopleUrl)
       .pipe(
         retry(3),
         catchError(this.handleError)

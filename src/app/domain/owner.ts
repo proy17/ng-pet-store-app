@@ -1,8 +1,8 @@
-import Pet from "./pet";
+import Pet from './pet';
 
-export default class Owner {  
-    name: string;  
-    gender: string;  
-    age: number;  
+export default class Owner {
+    name: string;
+    gender: string;
+    age: number;
     pets: Pet[];
   }

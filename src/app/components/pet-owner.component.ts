@@ -15,7 +15,6 @@ export class PetOwnerComponent implements OnInit {
   viewDataModel = { Male: [], Female: [] };
 
   ngOnInit(): void {
-    const thiz = this;
     this.petOwnerService
       .sendGetRequest()
       .subscribe((owners: Owner[]) => {
@@ -23,7 +22,7 @@ export class PetOwnerComponent implements OnInit {
           if (!!owner.pets) {
             for (const pet of owner.pets) {
               if (pet.type === this.petType) {
-                thiz.viewDataModel[owner.gender].push(pet.name);
+                this.viewDataModel[owner.gender].push(pet.name);
               }
             }
           }
