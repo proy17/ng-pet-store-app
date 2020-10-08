@@ -1,4 +1,4 @@
-export default class Pet {  
-    name: string;  
-    type: string;  
-  }
+export default class Pet {
+  name: string;
+  type: string;
+}
