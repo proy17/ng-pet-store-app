@@ -1,8 +1,8 @@
 /* tslint:disable:no-unused-variable */
+import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { PetOwnerComponent } from './pet-owner.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { PetOwnersService } from '../services/pet-owners.service';
+import { PetOwnerComponent } from './pet-owner.component';
 
 describe('PetOwnerComponent', () => {
   let component: PetOwnerComponent;

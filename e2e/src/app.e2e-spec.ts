@@ -8,9 +8,11 @@ describe('Pet Store App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display title text "Pet Data" with sub title "Male" and "Female"', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('ng-pet-store-app app is running!');
+    expect(page.getTitleText()).toEqual('Pet Data');
+    expect(page.getMaleText()).toEqual('Male');
+    expect(page.getFemaleText()).toEqual('Female');
   });
 
   afterEach(async () => {
