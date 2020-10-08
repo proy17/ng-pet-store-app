@@ -1,0 +1,9 @@
+
+<div *ngIf="viewDataModel" class="name"><b>Male</b></div>
+<ul>
+  <li *ngFor="let item of viewDataModel.Male.sort()">{{item}}</li>
+</ul>
+<div *ngIf="viewDataModel" class="name"><b>Female</b></div>
+<ul>
+  <li *ngFor="let item of viewDataModel.Female.sort()">{{item}}</li>
+</ul>
