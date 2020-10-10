@@ -18,10 +18,9 @@ describe('PetOwnersService', () => {
 
   it('should fetch people with their pets', inject([PetOwnersService], async (service: PetOwnersService) => {
     expect(service).toBeTruthy();
-    const owners: Owner[] = await service.sendGetRequest()
+    const ownerData: any = await service.sendGetRequest()
       .toPromise();
-    expect(owners).toBeDefined();
-    expect(owners.length).toBeGreaterThan(0);
+    expect(ownerData).toBeDefined();
   }));
 
   it('should thorw error when fetching people', inject([PetOwnersService], async (service: PetOwnersService) => {

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiPeopleUrl: 'http://agl-developer-test.azurewebsites.net/people.json',
+  apiPeopleUrl: 'http://localhost:7071/api/GetPetStoreData',
 };
 
 /*

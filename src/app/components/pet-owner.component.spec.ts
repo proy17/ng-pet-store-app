@@ -65,9 +65,9 @@ describe('PetOwnerComponent', () => {
     expect(component).toBeTruthy();
     expect(component.petType).toEqual('Cat');
     expect(component.viewDataModel).toBeTruthy();
-    const maleOwners = component.viewDataModel.Female;
-    expect(maleOwners).toBeDefined();
-    for (const owner of maleOwners) {
+    const femaleOwners = component.viewDataModel.Female;
+    expect(femaleOwners).toBeDefined();
+    for (const owner of femaleOwners) {
       if (!!owner.pets) {
         for (const pet of owner.pets) {
           expect(pet.type).toEqual('Cat');

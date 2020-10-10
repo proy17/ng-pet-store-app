@@ -17,16 +17,8 @@ export class PetOwnerComponent implements OnInit {
   ngOnInit(): void {
     this.petOwnerService
       .sendGetRequest()
-      .subscribe((owners: Owner[]) => {
-        for (const owner of owners) {
-          if (!!owner.pets) {
-            for (const pet of owner.pets) {
-              if (pet.type === this.petType) {
-                this.viewDataModel[owner.gender].push(pet.name);
-              }
-            }
-          }
-        }
+      .subscribe((response: any) => {
+        this.viewDataModel= response;
       });
   }
 }

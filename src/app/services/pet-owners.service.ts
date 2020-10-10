@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
@@ -14,10 +14,13 @@ export class PetOwnersService {
    *
    * @returns Observable of Owner array
    */
-  public sendGetRequest(): Observable<Owner[]> {
-    return this.httpClient.get<Owner[]>(environment.apiPeopleUrl)
+  public sendGetRequest(): Observable<any> {
+    let params = new HttpParams();
+    params = params.append('petType', 'Cat');
+
+    return this.httpClient.get<Owner[]>(environment.apiPeopleUrl, {params: params})
       .pipe(
-        retry(3),
+        retry(1),
         catchError(this.handleError)
       );
   }
